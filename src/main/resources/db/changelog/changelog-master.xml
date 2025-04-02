@@ -7,5 +7,5 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
     <!-- We add a new feature to the application that requires a database change, we can create a new changelog file,
          add it to version control, and include it in the master changelog-->
-    <include file="db/changelog/changes/printzone1_gamme.sql"/>
+    <include file="db/changelog/changes/printzone1_delta.sql"/>
 </databaseChangeLog>
