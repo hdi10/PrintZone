@@ -11,6 +11,5 @@ public class Bestellung {
     @Column(name = "Bestellung_ID")
     private Long Id;
 
-    @Column
 
 }
