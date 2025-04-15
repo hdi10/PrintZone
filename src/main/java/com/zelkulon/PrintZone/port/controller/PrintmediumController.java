@@ -41,12 +41,14 @@ public class PrintmediumController {
 
     @PutMapping("/{id}")
     public PrintmediumDto updatePrintmedium(@PathVariable Long id, @Valid @RequestBody PrintmediumDto printDto) {
-        Printmedium updated = printmediumService.update(id, printDto.getTitel(), printDto.getPreis());
+        Printmedium updated = printmediumService.update(id, printDto.getTitel() ,printDto.getArt(), printDto.getPreis());
         return new PrintmediumDto(updated.getId(), updated.getTitel(),updated.getArt(), updated.getPreis());
     }
 
     @DeleteMapping("/{id}")
-    public void deletePrintmedium(@PathVariable Long id) {
-        printmediumService.delete(id);
+    public PrintmediumDto deletePrintmedium(@PathVariable Long id) {
+        Printmedium toBeDeleted = printmediumService.findById (id);
+        Printmedium deleted = printmediumService.delete(id);
+        return new PrintmediumDto(toBeDeleted.getId(),toBeDeleted.getTitel(),toBeDeleted.getArt(),toBeDeleted.getPreis());
     }
 }

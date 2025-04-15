@@ -35,7 +35,7 @@ public class PrintmediumService {
     }
 
     @Transactional
-    public Printmedium update(Long id, String titel, BigDecimal preis) {
+    public Printmedium update(Long id, String titel,String art, BigDecimal preis) {
         Printmedium existing = printmediumRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Printmedium mit ID " + id + " nicht gefunden"));
         existing.setTitel(titel);
@@ -44,10 +44,14 @@ public class PrintmediumService {
     }
 
     @Transactional
-    public void delete(Long id) {
+    public Printmedium delete(Long id) {
         if (!printmediumRepository.existsById(id)) {
             throw new EntityNotFoundException("Printmedium mit ID " + id + " nicht gefunden");
         }
+
+        Printmedium deletedPrintmedium = printmediumRepository.getReferenceById(id);
+
         printmediumRepository.deleteById(id);
+        return deletedPrintmedium;
     }
 }
