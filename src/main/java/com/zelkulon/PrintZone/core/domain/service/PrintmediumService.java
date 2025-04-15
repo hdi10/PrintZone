@@ -29,8 +29,8 @@ public class PrintmediumService {
     }
 
     @Transactional
-    public Printmedium create(String titel, BigDecimal preis) {
-        Printmedium pm = new Printmedium(titel, preis);
+    public Printmedium create(String titel,String art, BigDecimal preis) {
+        Printmedium pm = new Printmedium(titel,art, preis);
         return printmediumRepository.save(pm);
     }
 

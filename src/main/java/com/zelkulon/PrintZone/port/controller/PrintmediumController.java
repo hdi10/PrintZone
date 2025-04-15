@@ -23,26 +23,26 @@ public class PrintmediumController {
     @GetMapping
     public List<PrintmediumDto> getAllPrintmedien() {
         return printmediumService.findAll().stream()
-                .map(p -> new PrintmediumDto(p.getId(), p.getTitel(), p.getPreis()))
+                .map(p -> new PrintmediumDto(p.getId(), p.getTitel(),p.getArt(), p.getPreis()))
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
     public PrintmediumDto getPrintmediumById(@PathVariable Long id) {
         Printmedium pm = printmediumService.findById(id);
-        return new PrintmediumDto(pm.getId(), pm.getTitel(), pm.getPreis());
+        return new PrintmediumDto(pm.getId(), pm.getTitel(),pm.getArt(), pm.getPreis());
     }
 
     @PostMapping
     public PrintmediumDto createPrintmedium(@Valid @RequestBody PrintmediumDto printDto) {
-        Printmedium saved = printmediumService.create(printDto.getTitel(), printDto.getPreis());
-        return new PrintmediumDto(saved.getId(), saved.getTitel(), saved.getPreis());
+        Printmedium saved = printmediumService.create(printDto.getTitel(),printDto.getArt(), printDto.getPreis());
+        return new PrintmediumDto(saved.getId(), saved.getTitel(),saved.getArt(), saved.getPreis());
     }
 
     @PutMapping("/{id}")
     public PrintmediumDto updatePrintmedium(@PathVariable Long id, @Valid @RequestBody PrintmediumDto printDto) {
         Printmedium updated = printmediumService.update(id, printDto.getTitel(), printDto.getPreis());
-        return new PrintmediumDto(updated.getId(), updated.getTitel(), updated.getPreis());
+        return new PrintmediumDto(updated.getId(), updated.getTitel(),updated.getArt(), updated.getPreis());
     }
 
     @DeleteMapping("/{id}")

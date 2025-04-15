@@ -10,8 +10,8 @@ public class Printmedium {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String titel;
+    private String art;
     private BigDecimal preis;
 
     @OneToMany(mappedBy = "printmedium", fetch = FetchType.LAZY)
@@ -19,8 +19,9 @@ public class Printmedium {
 
     public Printmedium() { }
 
-    public Printmedium(String titel, BigDecimal preis) {
+    public Printmedium(String titel,String art, BigDecimal preis) {
         this.titel = titel;
+        this.art = art;
         this.preis = preis;
     }
 
@@ -35,6 +36,15 @@ public class Printmedium {
 
     public String getTitel() { return titel; }
     public void setTitel(String titel) { this.titel = titel; }
+
+    public String getArt() {
+        return art;
+    }
+
+    public void setArt(String art) {
+        this.art = art;
+    }
+
     public BigDecimal getPreis() { return preis; }
     public void setPreis(BigDecimal preis) { this.preis = preis; }
     public List<Bestellposition> getBestellpositionen() { return bestellpositionen; }

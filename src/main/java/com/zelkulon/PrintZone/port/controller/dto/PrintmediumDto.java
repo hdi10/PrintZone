@@ -8,14 +8,17 @@ public class PrintmediumDto {
     private Long id;
     @NotBlank(message = "Titel darf nicht leer sein")
     private String titel;
+    @NotNull
+    private String art;
     @NotNull(message = "Preis ist erforderlich")
     private BigDecimal preis;
 
     public PrintmediumDto() { }
 
-    public PrintmediumDto(Long id, String titel, BigDecimal preis) {
+    public PrintmediumDto(Long id, String titel, String art, BigDecimal preis) {
         this.id = id;
         this.titel = titel;
+        this.art = art;
         this.preis = preis;
     }
 
@@ -26,4 +29,12 @@ public class PrintmediumDto {
     public void setTitel(String titel) { this.titel = titel; }
     public BigDecimal getPreis() { return preis; }
     public void setPreis(BigDecimal preis) { this.preis = preis; }
+
+    public String getArt() {
+        return art;
+    }
+
+    public void setArt(String art) {
+        this.art = art;
+    }
 }
